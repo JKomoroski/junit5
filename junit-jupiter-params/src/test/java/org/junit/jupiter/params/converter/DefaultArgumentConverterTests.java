@@ -61,6 +61,7 @@ class DefaultArgumentConverterTests {
 	void isAwareOfNull() {
 		assertConverts(null, Object.class, null);
 		assertConverts(null, String.class, null);
+		assertConverts("null", Boolean.class, null);
 	}
 
 	@Test

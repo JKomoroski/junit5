@@ -22,9 +22,10 @@ class StringToBooleanConverter implements StringToObjectConverter {
 	@Override
 	public Object convert(String source, Class<?> targetType) {
 		boolean isTrue = "true".equalsIgnoreCase(source);
-		Preconditions.condition(isTrue || "false".equalsIgnoreCase(source),
-			() -> "String must be 'true' or 'false' (ignoring case): " + source);
-		return isTrue;
+		boolean isNull = "null".equalsIgnoreCase(source);
+		Preconditions.condition(isTrue || "false".equalsIgnoreCase(source) || isNull,
+				() -> "String must be 'true', 'false', or 'null' (ignoring case): " + source);
+		return isNull ? null : isTrue;
 	}
 
 }
